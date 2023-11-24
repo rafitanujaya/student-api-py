@@ -66,7 +66,6 @@ Before running the application, make sure you have the following installed:
 
 Run the application:
 
-```bash
 python3 app.py
 # Student Management API
 
