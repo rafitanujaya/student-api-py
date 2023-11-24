@@ -107,4 +107,4 @@ def deletedStudentById(Id):
         db.session.commit()
         return make_response(f"student {Id} deleted")
     else:
-        abort(f"student not found for id : {Id}")
+        abort(404, f"student not found for id : {Id}")
