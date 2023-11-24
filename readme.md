@@ -27,7 +27,7 @@ Before running the application, make sure you have the following installed:
 
     ```bash
     git clone https://github.com/rafitanujaya/student-api-py.git
-    cd Milestones
+    cd student-api-py
     ```
 
 2. **Install venv:**
