@@ -1,0 +1,120 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+paths:
+  /Students:
+    get:
+      operationId: src.services.student_service.getAllStudent
+      tags:
+        - Students
+      summary: Retrieve all student data
+      description: Retrieve all student data
+      responses:
+        200:
+          description: Successfully read students set operation
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Student"
+
+    post:
+      operationId: src.services.student_service.addStudent
+      tags:
+        - Students
+      summary: Create a student
+      description: Create a new student
+      parameters:
+        - name: student
+          in: body
+          description: Student to create
+          required: true
+          schema:
+            $ref: "#/definitions/Student"
+      responses:
+        201:
+          description: Successfully created student
+          schema:
+            $ref: "#/definitions/Student"
+
+  /students/{studentId}:
+    get:
+      operationId: src.services.student_service.getStudentById
+      tags:
+        - Students
+      summary: Get detail student by ID
+      description: Get detail student by ID
+      parameters:
+        - name: studentId
+          in: path
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Successfully get student from students data operation
+          schema:
+            $ref: "#/definitions/Student"
+
+    put:
+      operationId: src.services.student_service.updateStudent
+      tags:
+        - Students
+      summary: Update a student
+      description: Update a student
+      parameters:
+        - name: studentId
+          in: path
+          description: ID of the student to update
+          type: integer
+          required: true
+        - name: student
+          in: body
+          schema:
+            $ref: "#/definitions/Student"
+      responses:
+        200:
+          description: Successfully updated student
+          schema:
+            $ref: "#/definitions/Student"
+
+    delete:
+      operationId: src.services.student_service.deletedStudentById
+      tags:
+        - Students
+      summary: Delete a student from the students list
+      description: Delete a student
+      parameters:
+        - name: studentId
+          in: path
+          type: integer
+          required: true
+      responses:
+        204:
+          description: Successfully deleted a student
+
+# Definitions
+definitions:
+  Student:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      age:
+        type: integer
+      gender:
+        type: string
+      class_number:
+        type: integer
+      created_at:
+        type: string
+        format: date-time
