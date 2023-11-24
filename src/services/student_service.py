@@ -55,7 +55,7 @@ def addStudent(student):
         db.session.add(new_Student)
         db.session.commit()
 
-        data = schema.dump(class_number)
+        data = schema.dump(new_Student)
         return data, 201
 
     else:
